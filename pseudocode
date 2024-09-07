@@ -1,0 +1,22 @@
+MOV A, IO         ; Lê a entrada do teclado (direção da cobra)
+CMP A, 1          ; Se a direção for "cima"
+JZ UP
+CMP A, 2          ; Se a direção for "baixo"
+JZ DOWN
+CMP A, 3          ; Se a direção for "esquerda"
+JZ LEFT
+CMP A, 4          ; Se a direção for "direita"
+JZ RIGHT
+
+; Atualiza a posição da cobra com base na direção
+UP:   MOV snakeY, snakeY - 1
+      JMP CONTINUE
+DOWN: MOV snakeY, snakeY + 1
+      JMP CONTINUE
+LEFT: MOV snakeX, snakeX - 1
+      JMP CONTINUE
+RIGHT:MOV snakeX, snakeX + 1
+
+CONTINUE:
+      DRAW snakeX, snakeY     ; Desenha a nova posição da cobra
+      JMP 0                  ; Volta para o início
